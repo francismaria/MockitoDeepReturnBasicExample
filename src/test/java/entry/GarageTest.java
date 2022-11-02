@@ -51,7 +51,6 @@ class GarageTest {
 		assertEquals(750.0, toTest.getCostForRepair(RepairType.ENGINE));
 	}
 	
-
 	@Test
 	void getRepairCost_windowRepairType_throwsUnsupportedException() {		
 		assertThrows(IllegalStateException.class, () -> toTest.getCostForRepair(RepairType.WINDOW));
