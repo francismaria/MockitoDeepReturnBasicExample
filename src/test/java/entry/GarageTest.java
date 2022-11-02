@@ -21,7 +21,6 @@ class GarageTest {
 	private TireService tireService;
 	@Mock
 	private EngineService engineService;
-
 	
 	private Garage toTest;
 
