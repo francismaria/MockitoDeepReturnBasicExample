@@ -16,9 +16,9 @@ public class Garage {
 	public double getCostForRepair(RepairType repairType) {
 		switch(repairType) {
 		case TIRE:
-			return tireService.getRepairCost();
+			return tireService.createCostServiceInstance().getRepairCost();
 		case ENGINE:
-			return engineService.getRepairCost();
+			return engineService.createCostServiceInstance().getRepairCost();
 		default:
 			throw new IllegalStateException(String.format("Garage is not yet ready to support repairs of type: %s.", repairType));
 		}

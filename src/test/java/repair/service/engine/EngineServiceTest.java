@@ -1,6 +1,7 @@
 package repair.service.engine;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,7 @@ class EngineServiceTest {
 	}
 
 	@Test
-	void getRepairCost_returnsExpectedValue() {
-		assertEquals(1000.50, toTest.getRepairCost());
+	void createCostServiceInstance_returnsExpectedValue() {
+		assertThat(toTest.createCostServiceInstance(), instanceOf(EngineCostService.class));
 	}
-
 }

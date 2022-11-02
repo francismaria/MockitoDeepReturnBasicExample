@@ -11,7 +11,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import entry.Garage;
 import entry.RepairType;
+import repair.service.engine.EngineCostService;
 import repair.service.engine.EngineService;
+import repair.service.tire.TireCostService;
 import repair.service.tire.TireService;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,7 +22,11 @@ class GarageTest {
 	@Mock
 	private TireService tireService;
 	@Mock
+	private TireCostService tireCostService;
+	@Mock
 	private EngineService engineService;
+	@Mock
+	private EngineCostService engineCostService;
 	
 	private Garage toTest;
 
@@ -31,14 +37,16 @@ class GarageTest {
 	
 	@Test
 	void getRepairCost_tireRepairType_returnsTireServiceCost() {
-		when(tireService.getRepairCost()).thenReturn(500.0);
+		when(tireService.createCostServiceInstance()).thenReturn(tireCostService);
+		when(tireCostService.getRepairCost()).thenReturn(500.0);
 		
 		assertEquals(500.0, toTest.getCostForRepair(RepairType.TIRE));
 	}
 
 	@Test
 	void getRepairCost_engineRepairType_returnsEngineServiceCost() {
-		when(engineService.getRepairCost()).thenReturn(750.0);
+		when(engineService.createCostServiceInstance()).thenReturn(engineCostService);
+		when(engineCostService.getRepairCost()).thenReturn(750.0);
 		
 		assertEquals(750.0, toTest.getCostForRepair(RepairType.ENGINE));
 	}

@@ -1,11 +1,12 @@
 package repair.service.tire;
 
+import repair.service.CostService;
 import repair.service.RepairService;
 
 public class TireService implements RepairService {
 
-	public double getRepairCost() {
-		return 200.0;
+	@Override
+	public CostService createCostServiceInstance() {
+		return new TireCostService();
 	}
-	
 }
